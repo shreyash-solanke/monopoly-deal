@@ -1,4 +1,4 @@
-package com.game.monopolydeal.Entities;
+package com.game.monopolydeal.entity;
 
 import jakarta.persistence.*;
 
