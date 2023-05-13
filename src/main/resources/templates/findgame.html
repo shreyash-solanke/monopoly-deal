@@ -37,7 +37,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" th:href="@{/newgame}">
-                       Create New Game
+                        Create New Game
                     </a>
                 </li>
                 <li class="nav-item">
@@ -55,11 +55,7 @@
                         Past Games
                     </a>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link active" aria-current="page" th:href="@{/welcome}">-->
-<!--                        <span th:text="${name}"></span>-->
-<!--                    </a>-->
-<!--                </li>-->
+
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item nav-item dropdown">
@@ -77,8 +73,41 @@
 </nav>
 <br /><br /><br />
 <div class="container">
-    <h1> <center> MONOPOLY DEAL </center></h1>
-    <center><img width="100%" padding="2%" th:src="@{/images/monopoly-deal.jpg}" /> </center>
+    <table class="table align-middle mb-0 bg-white" width="70%">
+        <thead class="bg-light">
+        <tr>
+            <th>ID</th>
+            <th>Lobby Name</th>
+            <th>Status</th>
+            <th>Number of Players</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="game : ${availableGames}">
+            <td>
+                <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                        <p class="fw-bold mb-1" th:text="${game.gameID}"></p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p class="fw-normal mb-1" th:text="${game.gameName}"></p>
+            </td>
+            <td>
+                <span class="badge badge-success bg-success rounded-pill d-inline" th:text="${game.gameStatus}">A</span>
+            </td>
+            <td><span th:text="${game.currentNumOfPlayers}"></span> / <span th:text="${game.maxNumOfPlayers}"></span></td>
+            <td>
+                <button  type="button" class="btn btn-link btn-sm btn-rounded">
+                    <a th:href="@{/joinwaitingscreen/{id}(id=${game.gameID})}">Join</a>
+                </button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

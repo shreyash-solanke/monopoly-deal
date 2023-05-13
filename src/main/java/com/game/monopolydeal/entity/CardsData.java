@@ -9,16 +9,22 @@ public class CardsData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer CardID;
 
+    @Column
     private String CardName;
 
+    @Column
     private String CardType;
 
+    @Column
     private Integer TotalCount;
 
+    @Column
     private Integer needed_for_set;
 
+    @Column
     private Integer MonetoryValue_Millions;
 
+    @Column
     private String CardsDescription;
 
     // getters and setters...

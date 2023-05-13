@@ -25,6 +25,9 @@
       right: 0px;
     }
   </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/assets/js/gamescreen.js}"></script>
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -33,34 +36,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/newgame}">
-                       Create New Game
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/findgame}">
-                        Find game
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/showstats}">
-                        Show Stats
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/gamehistory}">
-                        Past Games
-                    </a>
-                </li>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link active" aria-current="page" th:href="@{/welcome}">-->
-<!--                        <span th:text="${name}"></span>-->
-<!--                    </a>-->
-<!--                </li>-->
-            </ul>
+
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,13 +48,12 @@
                     </div>
                 </li>
             </ul>
-        </div>
     </div>
 </nav>
 <br /><br /><br />
 <div class="container">
-    <h1> <center> MONOPOLY DEAL </center></h1>
-    <center><img width="100%" padding="2%" th:src="@{/images/monopoly-deal.jpg}" /> </center>
+    <h1> <center> GAME SCREEN </center></h1>
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

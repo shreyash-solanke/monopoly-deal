@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 @Configuration
 @EnableWebSecurity
@@ -18,21 +19,27 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        HttpSessionRequestCache requestCache = new HttpSessionRequestCache();
+        requestCache.setMatchingRequestParameterName(null);
         http
+                .requestCache((cache) -> cache
+                        .requestCache(requestCache)
+                )
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/index", "/assets/**", "/webjars/**", "/images/**").permitAll()
-                        .requestMatchers("/register/**").permitAll()
+                        .requestMatchers("/register/**", "/websocket", "/app/**", "/topic/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/welcome")
+                        .defaultSuccessUrl("/screendecide")
                         .permitAll()
                 )
                 .logout((logout) -> logout.permitAll())
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                    .invalidSessionUrl("/login");;
+                    .invalidSessionUrl("/login");
+
 
         return http.build();
     }

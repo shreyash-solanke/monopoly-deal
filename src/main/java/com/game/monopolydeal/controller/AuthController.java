@@ -32,9 +32,6 @@ public class AuthController {
     UserRepo userRepo;
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
     private CardsDataRepo cardsRepo;
 
     @Autowired
@@ -54,7 +51,6 @@ public class AuthController {
 
     @GetMapping("/welcome")
     public String welcome(@ModelAttribute("user") @Valid UserDto userDto, BindingResult result, Model model) {
-
 
         //get current info
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
